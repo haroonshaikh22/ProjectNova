@@ -2,6 +2,10 @@ import Mailgen from "mailgen";
 import nodemailer from "nodemailer";
 
 const sendMail = async (options) => {
+
+  console.log('======mail option==============================');
+  console.log(options);
+  console.log('====================================');
   const mailGenerator = new Mailgen({
     theme: "default",
     product: {
@@ -10,7 +14,7 @@ const sendMail = async (options) => {
     },
   });
 
-  const emailTextual = mailGenerator.generatePlaintext(options.maigenContent);
+  const emailTextual = mailGenerator.generatePlaintext(options.mailgenContent);
 
   const emailHtml = mailGenerator.generate(options.mailgenContent);
 
@@ -25,12 +29,12 @@ const sendMail = async (options) => {
     },
   });
 
-  const mail = {
-    from: "projectnova@example.com", // sender address
-    to: options.to, // list of recipients
-    subject: options.subject, // subject line
-    text: emailTextual, // plain text body
-    html: emailHtml, // HTML body
+   const mail = {
+    from: "mail.taskmanager@example.com",
+    to: options.email,
+    subject: options.subject,
+    text: emailTextual,
+    html: emailHtml,
   };
 
   try {
@@ -41,6 +45,10 @@ const sendMail = async (options) => {
 };
 
 const emailVerificationMailTemplate = (username, verificationUrl) => {
+
+  console.log('=======================content data=============');
+  console.log(username,verificationUrl);
+  console.log('====================================');
   return {
     body: {
       name: username,

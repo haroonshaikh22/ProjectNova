@@ -16,7 +16,7 @@ const userSchema = new Schema(
         localPath: "",
       },
     },
-    userName: {
+    username: {
       type: String,
       required: true,
       unique: true,
@@ -32,7 +32,6 @@ const userSchema = new Schema(
     },
     fullName: {
       type: String,
-      required: true,
       trim: true,
     },
     password: {
@@ -65,12 +64,11 @@ const userSchema = new Schema(
 
 // Pre-save hook to hash the password before saving the user document
 userSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    next(); // If the password is not modified, skip hashing
-  }
+  if (!this.isModified("password")) return;
+  // next();
 
-  this.password = await bcrypt.hash(this.password, 10); // Hash the password before saving
-  next();
+  this.password = await bcrypt.hash(this.password, 10);
+  // next();
 });
 
 userSchema.methods.isPasswordCorrect = async function (password) {
