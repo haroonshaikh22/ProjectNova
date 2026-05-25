@@ -16,6 +16,9 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(express.static('public'));
 // for serving static files from the 'public' directory
 
+app.use(cookieParser());
+// for parsing cookies from the request headers and storing them in req.cookies for easy access in route handlers
+
 
 // cors configuration to handle url from env variable and allow credentials and specific methods and headers
 app.use(cors({
@@ -29,6 +32,7 @@ app.use(cors({
 // import routes
 import healthCheckRouter from "./routes/healthCheck.routes.js";
 import authRouter from "./routes/auth.routes.js";
+import cookieParser from 'cookie-parser';
 
 app.use("/api/v1/healthcheck", healthCheckRouter);
 app.use("/api/v1/auth",authRouter );
