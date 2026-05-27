@@ -7,10 +7,16 @@ class ApiError extends Error {
     this.susscess = false;
     if (stack) {
       this.stack = stack;
+      console.log('=========stack==========================');
+      console.log(stack);
+      console.log('====================================');
     } else {
+      console.log('========this============================');
+      console.log(this, this.constructor);
+      console.log('====================================');
       Error.captureStackTrace(this, this.constructor);
     }
-    
+
   }
 }
 
