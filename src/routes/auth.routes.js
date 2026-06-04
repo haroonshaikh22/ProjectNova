@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {changePassword, forgotPassword, getCurrentUser, loginUser, logoutUser, refreshAccessToken, registerUser, resendEmailVerification, resetPassword, verifyEmail} from "../controllers/auth.controllers.js";
-import { userChangeCurrentPasswordValidator, userForgotPasswordValidator, userLoginValidator, userRegisterValidator, } from "../validator/index.js";
+import { userChangeCurrentPasswordValidator, userForgotPasswordValidator, userLoginValidator, userRegisterValidator, userResetForgotPasswordValidator, } from "../validator/index.js";
 import { validate } from "../middlewares/validator.middleware.js";
 import { verifyJWT } from '../middlewares/auth.middleware.js';
 

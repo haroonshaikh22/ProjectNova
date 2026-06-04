@@ -35,8 +35,8 @@ const userLoginValidator = () => {
 
 const userChangeCurrentPasswordValidator = () => {
   return [
-    body(oldPassword).notEmpty().withMessage("Old Password is Required"),
-    body(newPassword).notEmpty().withMessage("New Password is Required"),
+    body("oldPassword").notEmpty().withMessage("Old Password is Required"),
+    body("newPassword").notEmpty().withMessage("New Password is Required"),
   ];
 };
 
