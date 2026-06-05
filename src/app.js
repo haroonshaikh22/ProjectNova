@@ -33,10 +33,12 @@ app.use(cors({
 import healthCheckRouter from "./routes/healthCheck.routes.js";
 import authRouter from "./routes/auth.routes.js";
 import cookieParser from 'cookie-parser';
+import errorHandler from './middlewares/error.middleware.js';
 
 app.use("/api/v1/healthcheck", healthCheckRouter);
 app.use("/api/v1/auth",authRouter );
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
+app.use(errorHandler);
 export default app
